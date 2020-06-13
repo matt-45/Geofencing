@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Geofencing.MainPage">
+
+    <StackLayout>
+        <!-- Place new controls here -->
+        <Label 
+            x:Name="FenceDistance"
+            HorizontalOptions="Center"
+            VerticalOptions="CenterAndExpand" />
+        
+        <Label Text="Center Location: 36.0967124, -80.0728266" 
+           HorizontalOptions="Center"
+           VerticalOptions="CenterAndExpand" />
+        
+        <Label 
+            x:Name="CurrentLocation"
+            HorizontalOptions="Center"
+            VerticalOptions="CenterAndExpand" />
+        
+        <Label 
+            x:Name="DistanceLabel"
+            HorizontalOptions="Center"
+            VerticalOptions="CenterAndExpand" />
+        
+        <Label 
+            x:Name="Result"
+            FontSize="27"
+            FontAttributes="Bold"
+            HorizontalOptions="Center"
+            VerticalOptions="CenterAndExpand" />
+        
+        <Label 
+            x:Name="listenLabel"
+            FontSize="20"
+            HorizontalOptions="Center"
+            VerticalOptions="CenterAndExpand" />
+        
+        <Button
+            x:Name="CFButton"
+            Text="Coder Foundry"
+            Clicked="CoderFoundry_OnClicked"
+            BackgroundColor="Green"/>
+        
+        <Button
+            x:Name="ClassroomButton"
+            Text="Classroom A"
+            Clicked="ClassroomA_OnClicked"
+            BackgroundColor="Red"/>
+    </StackLayout>
+
+</ContentPage>
