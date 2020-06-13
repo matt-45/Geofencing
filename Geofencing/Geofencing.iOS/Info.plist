@@ -35,7 +35,16 @@
     <key>XSAppIconAssets</key>
     <string>Assets.xcassets/AppIcon.appiconset</string>
 
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Your message</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>Your message</string>
     <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Curby needs to use your location.</string>
+    <string>Your message</string>
+
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>location</string>
+    </array>
 </dict>
 </plist>
