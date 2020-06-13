@@ -33,7 +33,7 @@ namespace Geofencing
 
         async Task StartListening()
         {
-            await CrossGeolocator.Current.StartListeningAsync(TimeSpan.FromSeconds(1), 10, true, new Plugin.Geolocator.Abstractions.ListenerSettings
+            /*await CrossGeolocator.Current.StartListeningAsync(TimeSpan.FromSeconds(1), 10, true, new Plugin.Geolocator.Abstractions.ListenerSettings
             {
                 ActivityType = Plugin.Geolocator.Abstractions.ActivityType.AutomotiveNavigation,
                 AllowBackgroundUpdates = true,
@@ -41,9 +41,15 @@ namespace Geofencing
                 DeferralDistanceMeters = 1,
                 DeferralTime = TimeSpan.FromSeconds(2),
                 ListenForSignificantChanges = true,
-            });
-
-            CrossGeolocator.Current.PositionChanged += Current_PositionChanged;
+            });*/
+            
+            if (CrossGeolocator.IsSupported &&
+                CrossGeolocator.Current.IsGeolocationAvailable &&
+                CrossGeolocator.Current.IsGeolocationEnabled)
+            {
+                CrossGeolocator.Current.PositionChanged += Current_PositionChanged;
+                await CrossGeolocator.Current.StartListeningAsync(TimeSpan.FromSeconds(1), 10);
+            }
         }
 
         private void Current_PositionChanged(object sender, Plugin.Geolocator.Abstractions.PositionEventArgs e)
