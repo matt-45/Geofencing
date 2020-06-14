@@ -17,9 +17,10 @@ namespace Geofencing
     {
         // 36.0967124, -80.0728266 Coder Foundry
         private MainPageViewModel _viewModel;
-        private double _fenceDistance = 30;
+        private double _fenceDistance = 15;
         Location coderFoundry = new Location(36.0967124, -80.0728266);
         Location classRoomA = new Location(36.0966796, -80.0719821);
+        Location homeFromDoor = new Location(35.9459782 ,-80.11415);
         private Location myLocation;
         private Location selectedLocation;
         public MainPage()
@@ -29,6 +30,7 @@ namespace Geofencing
             selectedLocation = coderFoundry;
             StartListening();
             BindingContext = _viewModel;
+            MainStackLayout.BackgroundColor = Color.Yellow;
         }
 
         async Task StartListening()
@@ -41,7 +43,9 @@ namespace Geofencing
                 DeferralDistanceMeters = 1,
                 DeferralTime = TimeSpan.FromSeconds(2),
                 ListenForSignificantChanges = true,
-            });*/
+            });
+            CrossGeolocator.Current.PositionChanged += Current_PositionChanged;*/
+
             
             if (CrossGeolocator.IsSupported &&
                 CrossGeolocator.Current.IsGeolocationAvailable &&
@@ -71,14 +75,18 @@ namespace Geofencing
                 DistanceLabel.Text = $"Distance from Center: {distance * 1000} Meters";
                 CurrentLocation.Text = $"Current Location: {myLocation.Latitude}, {myLocation.Longitude}";
                 FenceDistance.Text = $"Fence Distance: {_fenceDistance} Meters";
+                
                 if (distance * 1000 < _fenceDistance)
                 {
                     Result.Text = "You are in the fence!";
+                    MainStackLayout.BackgroundColor = Color.Green;
                 }
                 else
                 {
                     Result.Text = "You are not in the fence.";
+                    MainStackLayout.BackgroundColor = Color.Red;
                 }
+                
             });
         }
 
@@ -93,7 +101,7 @@ namespace Geofencing
         {
             CFButton.BackgroundColor = Color.Red;
             ClassroomButton.BackgroundColor = Color.Green;
-            selectedLocation = classRoomA;
+            selectedLocation = homeFromDoor;
         }
     }
 }

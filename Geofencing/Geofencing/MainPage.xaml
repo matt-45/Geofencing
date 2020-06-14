@@ -6,7 +6,8 @@
              mc:Ignorable="d"
              x:Class="Geofencing.MainPage">
 
-    <StackLayout>
+    <StackLayout
+        x:Name="MainStackLayout">
         <!-- Place new controls here -->
         <Label 
             x:Name="FenceDistance"

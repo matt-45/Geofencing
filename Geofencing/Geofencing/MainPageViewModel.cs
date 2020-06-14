@@ -1,4 +1,6 @@
-﻿namespace Geofencing
+﻿using Xamarin.Forms;
+
+namespace Geofencing
 {
     public class MainPageViewModel
     {
@@ -11,5 +13,15 @@
         }
 
         public string DistanceText { get; set; }
+
+        public Color BackgroundColor
+        {
+            get
+            {
+                return Color.FromHex(BackgroundColorHex);
+            }
+        }
+
+        public string BackgroundColorHex { get; set; }
     }
 }
